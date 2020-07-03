@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "env NODE_ENV=development webpack-dev-server",
+    "build:dev": "env NODE_ENV=development webpack-dev-server --open-page \"html/\"",
     "build:prod": "env NODE_ENV=production webpack"
   },
   "keywords": [],

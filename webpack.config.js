@@ -1,12 +1,29 @@
 const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackBlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 
 const isDev = process.env.NODE_ENV === "development";
 
+const templates = fs.readdirSync(path.resolve(__dirname, "src", "html"));
+
+const htmlWebpackPlugins = templates.map(
+  (template) =>
+    new HtmlWebpackPlugin({
+      filename: path.join("html", template),
+      template: path.join("src", "html", template),
+    })
+);
+
 module.exports = {
   mode: process.env.NODE_ENV,
+  devServer: isDev
+    ? {
+        openPage: path.join("src", "html"),
+        compress: true,
+      }
+    : null,
   entry: {
     app: "./src/ts/app.ts",
   },
@@ -28,7 +45,11 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        use: ["html-loader"],
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
       },
       {
         test: /\.(jpg|png)$/,
@@ -49,14 +70,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "main.css",
     }),
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "src/index.html",
-    }),
-    new HtmlWebpackPlugin({
-      filename: "users.html",
-      template: "src/users.html",
-    }),
+    ...htmlWebpackPlugins,
     new CleanWebpackBlugin(),
   ],
   resolve: {
