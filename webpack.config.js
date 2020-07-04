@@ -16,16 +16,8 @@ const htmlWebpackPlugins = templates.map(
     })
 );
 
-const devServer = isDev
-  ? {
-      openPage: path.join("src", "html"),
-      compress: true,
-    }
-  : {};
-
 module.exports = {
   mode: process.env.NODE_ENV,
-  ...devServer,
   entry: {
     app: "./src/ts/app.ts",
   },
