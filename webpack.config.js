@@ -19,7 +19,10 @@ const htmlWebpackPlugins = templates.map(
 
 module.exports = {
   mode: process.env.NODE_ENV,
+<<<<<<< HEAD
 
+=======
+>>>>>>> 861b75b4ce0638cafbe7a9875b68067386f393a2
   entry: {
     app: "./src/ts/app.ts",
   },
