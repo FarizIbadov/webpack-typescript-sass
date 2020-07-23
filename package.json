@@ -34,7 +34,5 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {
-    "bootstrap": "^4.5.0"
-  }
+  "dependencies": {}
 }
