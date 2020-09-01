@@ -42,7 +42,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.ts$/,
+        test: /\.(t|j)s$/,
         use: ["babel-loader", "ts-loader"],
         exclude: /node_modules/,
       },
@@ -53,18 +53,18 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              plugins: [
-                autoprefixer()
-              ],
-              sourceMap: true
-            }
-          }, "sass-loader"],
+              plugins: [autoprefixer()],
+              sourceMap: true,
+            },
+          },
+          "sass-loader",
+        ],
       },
       {
         test: /\.html$/,
