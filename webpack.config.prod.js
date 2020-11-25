@@ -6,16 +6,13 @@ const autoprefixer = require("autoprefixer");
 const CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: {
     app: path.join(__dirname, "src", "js", "index.js"),
   },
-  devtool: "inline-source-map",
+  devtool: "none",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
-  },
-  devServer: {
-    open: true,
   },
   module: {
     rules: [
